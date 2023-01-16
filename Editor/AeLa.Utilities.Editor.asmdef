@@ -1,0 +1,20 @@
+{
+    "name": "AeLa.Utilities.Editor",
+    "rootNamespace": "AeLa.Utilities.Editor",
+    "references": [
+        "GUID:330cc2e1a8807401982462d4bc2650fb",
+        "GUID:cb7ef9d091ef9704cac35413bf140440",
+        "GUID:20dfc4c7578775b408501a7e6bd820e7"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
