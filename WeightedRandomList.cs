@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AeLa.KA.Utility
+namespace AeLa.Utilities
 {
 	[System.Serializable]
 	public class WeightedRandomList<T> : IList<WeightedRandomList<T>.WeightedRandomItem>
