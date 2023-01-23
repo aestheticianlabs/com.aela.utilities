@@ -6,6 +6,6 @@
 	"unity": "2020.3",
 	"documentationUrl": "https://github.com/aestheticianlabs/com.aela.utilities.scene-transition/",
 	"dependencies": {
-		"com.dbrizov.naughtyattributes": "2.1"
+		"com.dbrizov.naughtyattributes": "2.1.4"
 	}
 }
