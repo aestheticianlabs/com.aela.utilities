@@ -79,6 +79,12 @@ namespace AeLa.Utilities
 			return sb.ToString();
 		}
 
+		public static T RandomElement<T>(this IList<T> list)
+		{
+			var i = Random.Range(0, list.Count);
+			return list[i];
+		}
+
 		public static bool TryFind<T>(this IEnumerable<T> collection, Predicate<T> predicate, out T match)
 		{
 			foreach (var item in collection)
