@@ -271,5 +271,28 @@ namespace AeLa.Utilities
 
 			return nearest;
 		}
+		
+		/// <summary>
+		/// Gets the connected anchor for this joint in world space, whether or not there is a connected body.
+		/// </summary>
+		public static Vector3 GetWorldAnchor(this Joint joint) =>
+			joint.connectedBody
+				? joint.connectedAnchor + joint.connectedBody.transform.position
+				: joint.connectedAnchor;
+
+		/// <summary>
+		/// Sets the connected anchor for this joint in world space.
+		/// </summary>
+		public static void SetWorldAnchor(this Joint joint, Vector3 worldAnchor, Rigidbody connectedBody = null)
+		{
+			if (connectedBody)
+			{
+				joint.connectedBody = connectedBody;
+				joint.connectedAnchor = worldAnchor - connectedBody.transform.position;
+				return;
+			}
+
+			joint.connectedAnchor = worldAnchor;
+		}
 	}
 }
