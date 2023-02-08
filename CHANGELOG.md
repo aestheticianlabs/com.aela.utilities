@@ -9,8 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- CollisionSFX component.
+- ForwardCollisionEvents component.
+- DetectGround component.
+- Gizmo component.
+- NonAlloc raycast helper methods.
+- Easing functions.
 - RandomElement extension method for IList.
+- Joint get/set world anchor extension method.
 - (Editor) Option to clear active selection on play.
+
+### Changed
+
+- Reorganize scripts.
 
 ## [1.0.0] - 2023-01-16
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AeLa.Utilities
+namespace AeLa.Utilities.EditorTools
 {
 	/// <summary>
 	/// Component used to add editor comments
