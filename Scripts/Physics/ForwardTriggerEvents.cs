@@ -19,7 +19,7 @@ namespace AeLa.Utilities.Physics
 		[Tooltip("Send Exit events when this GameObject/component is disabled")]
 		public bool ExitOnDisable = true;
 
-		private HashSet<Collider> collidersEntered = new();
+		private List<Collider> collidersEntered = new();
 
 		private void SendEvent(string eventName, Collider other)
 		{
