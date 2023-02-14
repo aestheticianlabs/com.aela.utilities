@@ -1,3 +1,4 @@
+using System;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -96,6 +97,11 @@ namespace AeLa.Utilities.Physics
 		public void SetGlobalScale(float value)
 		{
 			GlobalScale = value;
+		}
+
+		private void OnDisable()
+		{
+			IsOnGround = false;
 		}
 
 		private void FixedUpdate()

@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - ForwardTriggerEvents component.
 
+### Changed
+- DetectGround sets IsOnGround to false on disable
+
 ## [1.1.0] - 2023-02-08
 
 ### Added
