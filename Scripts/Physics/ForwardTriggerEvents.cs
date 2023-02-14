@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AeLa.Utilities.Physics
@@ -11,6 +13,14 @@ namespace AeLa.Utilities.Physics
 		public CollisionEventType SendEvents = (CollisionEventType)~0;
 		public SendMessageOptions RequireReceiver = SendMessageOptions.DontRequireReceiver;
 
+		/// <summary>
+		/// Send Exit events when this GameObject/component is disabled
+		/// </summary>
+		[Tooltip("Send Exit events when this GameObject/component is disabled")]
+		public bool ExitOnDisable = true;
+
+		private HashSet<Collider> collidersEntered = new();
+
 		private void SendEvent(string eventName, Collider other)
 		{
 			foreach (var target in Targets)
@@ -18,11 +28,22 @@ namespace AeLa.Utilities.Physics
 				target.SendMessage(eventName, other, RequireReceiver);
 			}
 		}
-		
+
+		private void OnDisable()
+		{
+			if (!ExitOnDisable || (SendEvents & CollisionEventType.Exit) != CollisionEventType.Exit) return;
+			
+			foreach (var collider in collidersEntered)
+			{
+				SendEvent("OnTriggerExit", collider);
+			}
+		}
+
 		private void OnTriggerEnter(Collider other)
 		{
 			if ((SendEvents & CollisionEventType.Enter) != CollisionEventType.Enter) return;
 
+			collidersEntered.Add(other);
 			SendEvent("OnTriggerEnter", other);
 		}
 
@@ -30,6 +51,7 @@ namespace AeLa.Utilities.Physics
 		{
 			if ((SendEvents & CollisionEventType.Exit) != CollisionEventType.Exit) return;
 
+			collidersEntered.Remove(other);
 			SendEvent("OnTriggerExit", other);
 		}
 	}
