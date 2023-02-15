@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - DetectGround sets IsOnGround to false on disable
 - Send exit events on disable from ForwardTriggerEvents
 
+### Fixed
+- [DetectGround] Update LastHit before sending OnGroundChanged event
+
 ## [1.1.0] - 2023-02-08
 
 ### Added

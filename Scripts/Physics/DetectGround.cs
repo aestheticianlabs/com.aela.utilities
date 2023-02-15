@@ -117,8 +117,8 @@ namespace AeLa.Utilities.Physics
 			{
 				if (raycast.CastFrom(transform, out var hit, GlobalScale))
 				{
+					LastHit = hit; // need to set before value in case any on change listeners need it
 					IsOnGround = true;
-					LastHit = hit;
 					return;
 				}
 			}
