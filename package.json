@@ -1,6 +1,6 @@
 {
 	"name": "com.aela.utilities",
-	"version": "1.1.0-unreleased",
+	"version": "1.2.0",
 	"displayName": "AeLa Utilities",
 	"description": "Helpful Unity Utilities",
 	"unity": "2020.3",

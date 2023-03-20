@@ -5,9 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [1.2.0] - 2023-03-20
 
 ### Added
+
 - ForwardTriggerEvents component.
 - [UIFader] FadeInCoroutine/FadeOutCoroutine methods that return the Coroutine handle.
 - RoundToPrecision math util.
@@ -15,11 +16,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Jiggle component.
 
 ### Changed
+
 - DetectGround sets IsOnGround to false on disable.
 - Send exit events on disable from ForwardTriggerEvents.
 - [UIFader] FadeIn/FadeOut no longer return a Coroutine handle (allows use as UnityEvent listener).
 
 ### Fixed
+
 - [DetectGround] Update LastHit before sending OnGroundChanged event.
 
 ## [1.1.0] - 2023-02-08
