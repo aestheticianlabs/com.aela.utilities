@@ -103,6 +103,9 @@ namespace AeLa.Utilities
 			/// </summary>
 			public static float SignWithZero(float value) => value == 0 ? 0 : Mathf.Sign(value);
 
+			/// <summary>
+			/// Returns the provided vector projected on the plane defined by the world up vector
+			/// </summary>
 			public static Vector3 OnYPlane(Vector3 v) => Vector3.ProjectOnPlane(v, Vector3.up);
 		}
 	}
