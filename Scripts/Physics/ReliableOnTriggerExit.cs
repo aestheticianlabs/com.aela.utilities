@@ -21,7 +21,7 @@ namespace AeLa.Utilities.Physics
 		bool ignoreNotifyTriggerExit = false;
 
 		// Target callback
-		Dictionary<GameObject, _OnTriggerExit> waitingForOnTriggerExit = new Dictionary<GameObject, _OnTriggerExit>();
+		Dictionary<GameObject, _OnTriggerExit> waitingForOnTriggerExit = new();
 
 		public static void NotifyTriggerEnter(Collider c, GameObject caller, _OnTriggerExit onTriggerExit)
 		{

@@ -36,7 +36,7 @@ namespace AeLa.Utilities
 		/// </summary>
 		public static Vector3Int CeilToIntSigned(this Vector3 v)
 		{
-			return new Vector3Int
+			return new()
 			{
 				x = v.x.CeilToIntSigned(),
 				y = v.y.CeilToIntSigned(),

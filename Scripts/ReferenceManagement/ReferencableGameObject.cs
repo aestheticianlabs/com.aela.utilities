@@ -15,7 +15,7 @@ namespace AeLa.Utilities.ReferenceManagement
 			
 			if (!references.TryGetValue(reference, out var refs))
 			{
-				references.Add(reference, new List<GameObject> { gameObject });
+				references.Add(reference, new() { gameObject });
 				return;
 			}
 

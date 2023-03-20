@@ -6,7 +6,7 @@ namespace AeLa.Utilities
 {
 	public static class GUIDHelper
 	{
-		private static HashSet<string> guids = new HashSet<string>();
+		private static HashSet<string> guids = new();
 
 		public static string GetGUID()
 		{

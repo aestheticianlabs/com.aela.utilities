@@ -181,7 +181,7 @@ namespace AeLa.Utilities
 				// Here we add the foldout using a single line height, the label and change
 				// the value of property.isExpanded
 				property.isExpanded = EditorGUI.Foldout(
-					new Rect(position.x, position.y, position.width, lineHeight), property.isExpanded, label
+					new(position.x, position.y, position.width, lineHeight), property.isExpanded, label
 				);
 
 				// Now you want to draw the content only if you unfold this property
@@ -485,13 +485,13 @@ namespace AeLa.Utilities
 				var entry = new BuildScene
 				{
 					buildIndex = -1,
-					assetGUID = new GUID(string.Empty)
+					assetGUID = new(string.Empty)
 				};
 
 				if (sceneObject as SceneAsset == null) return entry;
 
 				entry.assetPath = AssetDatabase.GetAssetPath(sceneObject);
-				entry.assetGUID = new GUID(AssetDatabase.AssetPathToGUID(entry.assetPath));
+				entry.assetGUID = new(AssetDatabase.AssetPathToGUID(entry.assetPath));
 
 				var scenes = EditorBuildSettings.scenes;
 				for (var index = 0; index < scenes.Length; ++index)

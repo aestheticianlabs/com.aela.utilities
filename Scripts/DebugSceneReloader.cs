@@ -25,7 +25,7 @@ namespace AeLa.Utilities
 								new string[] { "Assets" }
 							)[0]
 						),
-						new LoadSceneParameters
+						new()
 						{
 							loadSceneMode = LoadSceneMode.Single
 						}

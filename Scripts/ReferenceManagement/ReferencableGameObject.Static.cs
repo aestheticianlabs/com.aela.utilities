@@ -5,11 +5,9 @@ namespace AeLa.Utilities.ReferenceManagement
 {
 	public partial class ReferencableGameObject
 	{
-		private static readonly Dictionary<GameObjectReference, List<GameObject>> references =
-			new Dictionary<GameObjectReference, List<GameObject>>();
+		private static readonly Dictionary<GameObjectReference, List<GameObject>> references = new();
 
-		private static readonly Dictionary<string, GameObjectReference> keys =
-			new Dictionary<string, GameObjectReference>();
+		private static readonly Dictionary<string, GameObjectReference> keys = new();
 
 		public static void InitializeReference(GameObjectReference reference)
 		{

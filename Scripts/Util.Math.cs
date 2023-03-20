@@ -64,14 +64,14 @@ namespace AeLa.Utilities
 
 			public static (Vector2, Vector2) GetMinMax(Vector2 a, Vector2 b)
 			{
-				return (new Vector2(Mathf.Min(a.x, b.x), Mathf.Min(a.y, b.y)),
-					new Vector2(Mathf.Max(a.x, b.x), Mathf.Max(a.y, b.y)));
+				return (new(Mathf.Min(a.x, b.x), Mathf.Min(a.y, b.y)),
+					new(Mathf.Max(a.x, b.x), Mathf.Max(a.y, b.y)));
 			}
 
 			public static (Vector2Int, Vector2Int) GetMinMax(Vector2Int a, Vector2Int b)
 			{
-				return (new Vector2Int(Mathf.Min(a.x, b.x), Mathf.Min(a.y, b.y)),
-					new Vector2Int(Mathf.Max(a.x, b.x), Mathf.Max(a.y, b.y)));
+				return (new(Mathf.Min(a.x, b.x), Mathf.Min(a.y, b.y)),
+					new(Mathf.Max(a.x, b.x), Mathf.Max(a.y, b.y)));
 			}
 
 			/// <summary>

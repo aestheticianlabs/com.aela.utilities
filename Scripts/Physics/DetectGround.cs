@@ -53,7 +53,7 @@ namespace AeLa.Utilities.Physics
 			public Ray GetRayFor(Transform transform)
 			{
 				var offset = transform.TransformDirection(this.offset);
-				return new Ray(transform.position + offset, -(orientToWorld ? Vector3.up : transform.up));
+				return new(transform.position + offset, -(orientToWorld ? Vector3.up : transform.up));
 			}
 		}
 
