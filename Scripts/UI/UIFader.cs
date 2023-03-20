@@ -64,7 +64,7 @@ namespace AeLa.Utilities.UI
 		/// <summary>
 		/// Fade from transparent to opaque.
 		/// </summary>
-		public Coroutine FadeIn()
+		public Coroutine FadeInCoroutine()
 		{
 			StopAllCoroutines();
 			return StartCoroutine(FadeRoutine(1));
@@ -73,11 +73,23 @@ namespace AeLa.Utilities.UI
 		/// <summary>
 		/// Fade from opaque to transparent.
 		/// </summary>
-		public Coroutine FadeOut()
+		public Coroutine FadeOutCoroutine()
 		{
 			StopAllCoroutines();
 			return StartCoroutine(FadeRoutine(-1));
 		}
+
+		/// <summary>
+		/// <inheritdoc cref="FadeInCoroutine()"/>
+		/// </summary>
+		/// <remarks>Able to be used as a UnityEvent listener in the editor, unlike the Coroutine-returning method.</remarks>
+		public void FadeIn() => FadeInCoroutine();
+
+		/// <summary>
+		/// <inheritdoc cref="FadeOutCoroutine()"/>
+		/// </summary>
+		/// <remarks>Able to be used as a UnityEvent listener in the editor, unlike the Coroutine-returning method.</remarks>
+		public void FadeOut() => FadeOutCoroutine();
 
 		private IEnumerator FadeRoutine(int direction)
 		{
