@@ -1,7 +1,3 @@
-using UnityEngine;
-using System.Globalization;
-using System.Text;
-
 namespace AeLa.Utilities.Debugging
 {
 	/// <summary>

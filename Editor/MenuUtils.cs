@@ -1,9 +1,7 @@
-using System;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace AeLa.Utilities.Editor
 {
