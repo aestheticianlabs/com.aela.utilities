@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [UIFader] FadeInCoroutine/FadeOutCoroutine methods that return the Coroutine handle.
 - RoundToPrecision math util.
 - Timer component.
+- Jiggle component.
 
 ### Changed
 - DetectGround sets IsOnGround to false on disable.
