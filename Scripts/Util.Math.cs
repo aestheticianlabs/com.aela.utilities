@@ -1,9 +1,11 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace AeLa.Utilities
 {
 	public static partial class Util
 	{
+		[PublicAPI]
 		public static class Math
 		{
 			public const float TAU = 2 * Mathf.PI;
@@ -107,6 +109,16 @@ namespace AeLa.Utilities
 			/// Returns the provided vector projected on the plane defined by the world up vector
 			/// </summary>
 			public static Vector3 OnYPlane(Vector3 v) => Vector3.ProjectOnPlane(v, Vector3.up);
+
+			/// <summary>
+			/// Rounds the provided value to the nearest decimal place for precision
+			/// </summary>
+			/// <param name="precision">The number of decimal places. Must be 0 or greater.</param>
+			public static float RoundToPrecision(float value, int precision)
+			{
+				var factor = Mathf.Pow(10, precision);
+				return Mathf.Round(value * factor) / factor;
+			}
 		}
 	}
 }
