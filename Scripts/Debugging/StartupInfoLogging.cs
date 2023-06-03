@@ -6,7 +6,7 @@ namespace AeLa.Utilities.Debugging
 	public static class StartupInfoLogging
 	{
 #if !UNITY_EDITOR || AELA_STARTUP_INFO_EDITOR
-		[RuntimeInitializeOnLoadMethod]
+		[UnityEngine.RuntimeInitializeOnLoadMethod]
 		public static void Initialize()
 		{
 			var sb = new StringBuilder();
