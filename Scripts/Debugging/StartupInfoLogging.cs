@@ -1,3 +1,8 @@
+#if !UNITY_EDITOR || AELA_STARTUP_INFO_EDITOR
+using System.Globalization;
+using System.Text;
+using UnityEngine;
+
 namespace AeLa.Utilities.Debugging
 {
 	/// <summary>
@@ -5,8 +10,7 @@ namespace AeLa.Utilities.Debugging
 	/// </summary>
 	public static class StartupInfoLogging
 	{
-#if !UNITY_EDITOR || AELA_STARTUP_INFO_EDITOR
-		[UnityEngine.RuntimeInitializeOnLoadMethod]
+		[RuntimeInitializeOnLoadMethod]
 		public static void Initialize()
 		{
 			var sb = new StringBuilder();
@@ -17,6 +21,6 @@ namespace AeLa.Utilities.Debugging
 			
 			Debug.Log(sb.ToString());
 		}
-#endif
 	}
 }
+#endif
