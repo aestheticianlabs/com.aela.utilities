@@ -1,9 +1,9 @@
 {
 	"name": "com.aela.utilities",
-	"version": "1.2.1",
+	"version": "1.3.0",
 	"displayName": "AeLa Utilities",
 	"description": "Helpful Unity Utilities",
-	"unity": "2020.3",
+	"unity": "2021.3",
 	"documentationUrl": "https://github.com/aestheticianlabs/com.aela.utilities.scene-transition/",
 	"dependencies": {
 		"com.dbrizov.naughtyattributes": "2.1.4"
