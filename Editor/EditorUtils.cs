@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 
 namespace AeLa.Utilities.Editor
 {
@@ -48,6 +49,12 @@ namespace AeLa.Utilities.Editor
 				Menu.SetChecked(MenuPath, Enabled);
 				return true;
 			}
+		}
+
+		[MenuItem(MenuRoot + "Open Application.persistentDataPath")]
+		public static void OpenApplicationPersistentDataPath()
+		{
+			EditorUtility.RevealInFinder(Application.persistentDataPath + "/");
 		}
 	}
 }
