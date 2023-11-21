@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `GameObject.TryGetComponentCached` and `GetOrAddComponentCached` extensions
 - Util.Random.AlphanumericString
 - AsyncFileWriter utility
 - `Tools/Editor/Open Application.persistentDataPath` menu option

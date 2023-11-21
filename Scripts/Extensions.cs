@@ -228,12 +228,14 @@ namespace AeLa.Utilities
 		/// <param name="component">The existing or added component</param>
 		/// <typeparam name="T">The component to add</typeparam>
 		/// <returns>Whether or not the component was added (false if already on GameObject)</returns>
-		public static bool GetOrAddComponent<T>(this GameObject go, out T component) where T : Component
+		public static T GetOrAddComponent<T>(this GameObject go) where T : Component
 		{
-			if (go.TryGetComponent(out component)) return true;
+			if (!go.TryGetComponent(out T component))
+			{
+				component = go.AddComponent<T>();
+			}
 
-			component = go.AddComponent<T>();
-			return false;
+			return component;
 		}
 
 		public static T NearestTo<T>(this IEnumerable<T> collection, Vector2 position) where T : Component
