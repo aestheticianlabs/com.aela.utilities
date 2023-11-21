@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AsyncFileWriter utility
 - `Tools/Editor/Open Application.persistentDataPath` menu option
 
+### Fixed
+
+- Remove NaughtyAttributes dependency in package.json to prevent Unity errors on import
+
 ## [1.3.0] - 2023-10-12
 
 ### Added
