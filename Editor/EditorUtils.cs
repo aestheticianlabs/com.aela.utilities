@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -54,7 +55,7 @@ namespace AeLa.Utilities.Editor
 		[MenuItem(MenuRoot + "Open Application.persistentDataPath")]
 		public static void OpenApplicationPersistentDataPath()
 		{
-			EditorUtility.RevealInFinder(Application.persistentDataPath + "/");
+			EditorUtility.RevealInFinder(Path.Combine(Application.persistentDataPath, "."));
 		}
 	}
 }
