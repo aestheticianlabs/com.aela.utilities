@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Remove NaughtyAttributes dependency in package.json to prevent Unity errors on import
+- Compiler errors in RuntimePlatformFlag.cs in Unity 2022
 
 ## [1.3.0] - 2023-10-12
 

@@ -165,8 +165,7 @@ namespace AeLa.Utilities
 				RuntimePlatform.LinuxServer => RuntimePlatformFlag.LinuxServer,
 				RuntimePlatform.WindowsServer => RuntimePlatformFlag.WindowsServer,
 				RuntimePlatform.OSXServer => RuntimePlatformFlag.OSXServer,
-				// TODO: not exactly sure what version these actually start appearing in
-#if UNITY_2022_1_OR_NEWER
+#if UNITY_2023_1_OR_NEWER
 				RuntimePlatform.LinuxHeadlessSimulation => RuntimePlatformFlag.LinuxHeadlessSimulation,
 				RuntimePlatform.QNXArm32 => RuntimePlatformFlag.QNXArm32,
 				RuntimePlatform.QNXArm64 => RuntimePlatformFlag.QNXArm64,
