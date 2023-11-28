@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `GameObject.TryGetComponentCached` and `GetOrAddComponentCached` extensions
+- `GameObject.GetComponentCached`, `TryGetComponentCached` and `GetOrAddComponentCached` extensions
 - GameObject lifecycle callbacks (Enable/Disable/Destroy)
 - Trigger Enter/Exit callbacks
 - Util.Random.AlphanumericString

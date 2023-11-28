@@ -8,13 +8,12 @@ namespace AeLa.Utilities
 	{
 		private static Dictionary<GameObject, Dictionary<Type, Component>> cache = new();
 
-		public static bool TryGetComponentCached<T>(this GameObject go, out T component) where T : Component
+		public static T GetComponentCached<T>(this GameObject go) where T : Component
 		{
 			// GameObject is being destroyed
 			if (!go)
 			{
-				component = null;
-				return false;
+				return null;
 			}
 
 			if (cache.TryGetValue(go, out var components) && components.TryGetValue(typeof(T), out var c))
@@ -24,15 +23,13 @@ namespace AeLa.Utilities
 				if (!c)
 				{
 					components.Remove(typeof(T));
-					component = null;
-					return false;
+					return null;
 				}
 
-				component = (T)c;
-				return true;
+				return (T)c;
 			}
 
-			if (!go.TryGetComponent(out component)) return false;
+			if (!go.TryGetComponent(out T component)) return null;
 
 			// add to cache if object has component
 			if (components == null)
@@ -45,7 +42,12 @@ namespace AeLa.Utilities
 
 			go.OnDestroy(RemoveFromCache);
 
-			return true;
+			return component;
+		}
+
+		public static bool TryGetComponentCached<T>(this GameObject go, out T component) where T : Component
+		{
+			return component = go.GetComponentCached<T>();
 		}
 
 		public static T GetOrAddComponentCached<T>(this GameObject go)  where T : Component
