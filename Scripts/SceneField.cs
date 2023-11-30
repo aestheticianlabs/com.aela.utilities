@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 namespace AeLa.Utilities
@@ -16,24 +17,24 @@ namespace AeLa.Utilities
 	public class SceneField
 	{
 		[SerializeField] private Object sceneAsset;
-		[SerializeField] private string sceneName = "";
+		[FormerlySerializedAs("sceneName")] [SerializeField] private string scenePath = "";
 
 		/// <summary>
 		/// The name of the scene.
 		/// </summary>
-		public string SceneName => sceneName;
+		public string ScenePath => scenePath;
 
 		// makes it work with the existing Unity methods (LoadLevel/LoadScene)
 		public static implicit operator string(SceneField sceneField)
 		{
-			return sceneField.SceneName;
+			return sceneField.ScenePath;
 		}
 
 		[Conditional("UNITY_EDITOR")]
 		public void RefreshSceneName()
 		{
 #if UNITY_EDITOR
-			sceneName = Path.GetFileNameWithoutExtension(
+			scenePath = Path.GetFileNameWithoutExtension(
 				path: AssetDatabase.GetAssetPath(sceneAsset)
 			);
 #endif
@@ -55,7 +56,7 @@ namespace AeLa.Utilities
 		{
 			EditorGUI.BeginProperty(position, GUIContent.none, property);
 			var sceneAsset = property.FindPropertyRelative("sceneAsset");
-			var sceneName = property.FindPropertyRelative("sceneName");
+			var scenePath = property.FindPropertyRelative("scenePath");
 
 			position = EditorGUI.PrefixLabel(
 				totalPosition: position,
@@ -66,7 +67,7 @@ namespace AeLa.Utilities
 			if (sceneAsset != null)
 			{
 				// warn if scene isn't in build settings
-				string scenePath = AssetDatabase.GetAssetPath(
+				string path = AssetDatabase.GetAssetPath(
 					assetObject: sceneAsset.objectReferenceValue
 				);
 
@@ -80,36 +81,22 @@ namespace AeLa.Utilities
 					allowSceneObjects: false
 				);
 
-				if (
-					value &&
-					(EditorGUI.EndChangeCheck() ||
-					value.name != sceneName.stringValue)
-				)
+				var valuePath = value ? AssetDatabase.GetAssetPath(value) : null;
+
+				if (value && (EditorGUI.EndChangeCheck() || valuePath != scenePath.stringValue))
 				{
 					sceneAsset.objectReferenceValue = value;
-					if (sceneAsset.objectReferenceValue != null)
-					{
-						scenePath = AssetDatabase.GetAssetPath(
-							sceneAsset.objectReferenceValue
-						);
-						sceneName.stringValue = Path.GetFileNameWithoutExtension(
-							path: scenePath
-						);
-					}
-					else
-					{
-						sceneName.stringValue = null;
-					}
+					scenePath.stringValue = valuePath;
 				}
 
 				// name label
 				EditorGUI.BeginDisabledGroup(true);
 				var style = new GUIStyle(EditorStyles.label);
-				if (!EditorBuildSettings.scenes.Any(s => s.path == scenePath))
+				if (!EditorBuildSettings.scenes.Any(s => s.path == path))
 				{
 					style.normal.textColor = Color.red;
 				}
-				EditorGUI.LabelField(position, null, sceneName.stringValue, style);
+				EditorGUI.LabelField(position, null, scenePath.stringValue, style);
 				EditorGUI.EndDisabledGroup();
 			}
 			EditorGUI.EndProperty();
