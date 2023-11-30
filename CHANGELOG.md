@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GameObject.GetComponentCached`, `TryGetComponentCached` and `GetOrAddComponentCached` extensions
 - GameObject lifecycle callbacks (Enable/Disable/Destroy)
 - Trigger Enter/Exit callbacks
+- Toolbox that holds stuff
 - Util.Random.AlphanumericString
 - AsyncFileWriter utility
 - `Tools/Editor/Open Application.persistentDataPath` menu option
