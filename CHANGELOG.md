@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - LogLevel enum
 - DebugFiltered static class for filtered debug logging
 - SceneField
+- WaitForEvent yield instruction
 
 ### Fixed
 
