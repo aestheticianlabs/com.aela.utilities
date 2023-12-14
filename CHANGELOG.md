@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AsyncFileWriter utility
 - `Tools/Editor/Open Application.persistentDataPath` menu option
 - LogLevel enum
+- DebugFiltered static class for filtered debug logging
 - SceneField
 
 ### Fixed
