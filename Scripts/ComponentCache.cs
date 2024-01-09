@@ -18,15 +18,10 @@ namespace AeLa.Utilities
 
 			if (cache.TryGetValue(go, out var components) && components.TryGetValue(typeof(T), out var c))
 			{
+				if (c) return (T)c;
 
 				// Component has been removed
-				if (!c)
-				{
-					components.Remove(typeof(T));
-					return null;
-				}
-
-				return (T)c;
+				components.Remove(typeof(T));
 			}
 
 			if (!go.TryGetComponent(out T component)) return null;

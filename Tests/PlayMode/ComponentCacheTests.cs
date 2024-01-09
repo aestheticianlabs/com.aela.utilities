@@ -54,6 +54,32 @@ namespace AeLa.Utilities.Tests.PlayMode
 			Object.Destroy(go);
 		}
 
+		[UnityTest]
+		public IEnumerator GetCached_ReturnsNewAfterRemovedAndAdded()
+		{
+			var go = new GameObject();
+
+			// add first component
+			go.AddComponent<EditorComment>();
+
+			Assert.That(go.TryGetComponentCached(out EditorComment c) && c, "Failed to get component on GameObject");
+			yield return null;
+
+			// remove component
+			Object.Destroy(c);
+			yield return null;
+
+			// IMPORTANT: don't check for the component until we add the new one--we want the cache to have the outdated one
+
+			// add a new component of the same type
+			go.AddComponent<EditorComment>();
+
+			// ensure cache finds and returns new component
+			Assert.That(go.TryGetComponentCached(out c) && c, "Failed to get new component on GameObject");
+
+			Object.Destroy(go);
+		}
+
 		[Test]
 		public void GetOrAddComponentCached_ReturnsCachedAfterAdd()
 		{
