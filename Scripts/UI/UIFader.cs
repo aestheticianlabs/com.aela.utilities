@@ -52,7 +52,9 @@ namespace AeLa.Utilities.UI
 
 		private CanvasGroup canvasGroup;
 
+        public UnityEvent OnFadeInStart;
 		public UnityEvent OnFadeInComplete;
+		public UnityEvent OnFadeOutStart;
 		public UnityEvent OnFadeOutComplete;
 
 		protected void Awake()
@@ -93,6 +95,8 @@ namespace AeLa.Utilities.UI
 
 		private IEnumerator FadeRoutine(int direction)
 		{
+			(direction > 0 ? OnFadeInStart : OnFadeOutStart)?.Invoke();
+
 			var alpha = canvasGroup.alpha;
 			var fadeDuration = direction > 0 ? FadeInTime : FadeOutTime;
 			var fadeCurve = direction > 0 ? FadeInCurve : FadeOutCurve;
