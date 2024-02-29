@@ -1,3 +1,4 @@
+using System;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -40,19 +41,35 @@ namespace AeLa.Utilities.Physics
 
 			public float Distance => distance;
 
-			public bool CastFrom(Transform transform, out RaycastHit hit, float distanceScale = 1f)
+			public bool CastFrom(Transform transform, Rigidbody body, out RaycastHit hit, float distanceScale = 1f)
 			{
-				var ray = GetRayFor(transform);
+				var ray = GetRayFor(transform, body);
 				return UnityEngine.Physics.Raycast(
 					ray, out hit, distance * distanceScale, layerMask,
 					QueryTriggerInteraction.Ignore
 				) && (string.IsNullOrEmpty(ignoreTag) ||!hit.collider.CompareTag(ignoreTag));
 			}
 
+			public Ray GetRayFor(Transform transform, Rigidbody body)
+			{
+				return body ? GetRayFor(body) : GetRayFor(transform);
+			}
+
 			public Ray GetRayFor(Transform transform)
 			{
 				var offset = transform.TransformDirection(this.offset);
-				return new(transform.position + offset, -(orientToWorld ? Vector3.up : transform.up));
+				return GetRayFor(transform.position, transform.up, offset);
+			}
+
+			public Ray GetRayFor(Rigidbody body)
+			{
+				var rot = body.rotation;
+				return GetRayFor(body.position, rot * Vector3.up, rot * offset);
+			}
+
+			private Ray GetRayFor(Vector3 position, Vector3 up, Vector3 offset)
+			{
+				return new(position + offset, -(orientToWorld ? Vector3.up : up));
 			}
 		}
 
@@ -67,6 +84,7 @@ namespace AeLa.Utilities.Physics
 
 		public BoolUnityEvent OnGroundChanged;
 
+		[SerializeField] Rigidbody body;
 		[SerializeField] private Raycast[] raycasts = { new() };
 
 		private bool isOnGround;
@@ -98,6 +116,11 @@ namespace AeLa.Utilities.Physics
 			GlobalScale = value;
 		}
 
+		private void OnValidate()
+		{
+			body = GetComponentInParent<Rigidbody>();
+		}
+
 		private void OnDisable()
 		{
 			IsOnGround = false;
@@ -114,7 +137,7 @@ namespace AeLa.Utilities.Physics
 			// check for each cast
 			foreach (var raycast in raycasts)
 			{
-				if (raycast.CastFrom(transform, out var hit, GlobalScale))
+				if (raycast.CastFrom(transform, body, out var hit, GlobalScale))
 				{
 					LastHit = hit; // need to set before value in case any on change listeners need it
 					IsOnGround = true;
@@ -129,7 +152,7 @@ namespace AeLa.Utilities.Physics
 		{
 			foreach (var raycast in raycasts)
 			{
-				var ray = raycast.GetRayFor(transform);
+				var ray = raycast.GetRayFor(transform, body);
 
 				Gizmos.color = Color.yellow;
 				Gizmos.DrawRay(ray.origin, ray.direction * raycast.Distance * GlobalScale);

@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - WaitForEvent yield instruction
 - `UIFader.OnFadeIn/OutStart` events
 
+### Changed
+
+- `DetectGround` uses rigidbody position and rotation for raycasts if available
+
 ### Fixed
 
 - Remove NaughtyAttributes dependency in package.json to prevent Unity errors on import
