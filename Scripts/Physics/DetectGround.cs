@@ -152,7 +152,7 @@ namespace AeLa.Utilities.Physics
 		{
 			foreach (var raycast in raycasts)
 			{
-				var ray = raycast.GetRayFor(transform, Application.isPlaying ? body : null);
+				var ray = raycast.GetRayFor(transform, body);
 
 				Gizmos.color = Color.yellow;
 				Gizmos.DrawRay(ray.origin, ray.direction * raycast.Distance * GlobalScale);
