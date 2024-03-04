@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove NaughtyAttributes dependency in package.json to prevent Unity errors on import
 - Compiler errors in RuntimePlatformFlag.cs in Unity 2022
+- Force set fader state on Fade In/Out when object is disabled
 
 ## [1.3.0] - 2023-10-12
 
