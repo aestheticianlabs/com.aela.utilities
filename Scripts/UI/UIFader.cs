@@ -68,17 +68,15 @@ namespace AeLa.Utilities.UI
 		/// </summary>
 		public Coroutine FadeInCoroutine()
 		{
-			if (!isActiveAndEnabled)
-			{
-				// can't start coroutine so force set state
-				OnFadeInStart.Invoke();
-				canvasGroup.alpha = FadeInCurve.Evaluate(1f);
-				OnFadeInComplete.Invoke();
-				return null;
-			}
-
 			StopAllCoroutines();
-			return StartCoroutine(FadeRoutine(1));
+
+			if (isActiveAndEnabled) return StartCoroutine(FadeRoutine(1));
+
+			// can't start coroutine so force set state
+			OnFadeInStart.Invoke();
+			canvasGroup.alpha = FadeInCurve.Evaluate(1f);
+			OnFadeInComplete.Invoke();
+			return null;
 		}
 
 		/// <summary>
@@ -86,17 +84,15 @@ namespace AeLa.Utilities.UI
 		/// </summary>
 		public Coroutine FadeOutCoroutine()
 		{
-			if (!isActiveAndEnabled)
-			{
-				// can't start coroutine so force set state
-				OnFadeOutStart.Invoke();
-				canvasGroup.alpha = FadeOutCurve.Evaluate(1f);
-				OnFadeOutComplete.Invoke();
-				return null;
-			}
-
 			StopAllCoroutines();
-			return StartCoroutine(FadeRoutine(-1));
+
+			if (isActiveAndEnabled) return StartCoroutine(FadeRoutine(-1));
+
+			// can't start coroutine so force set state
+			OnFadeOutStart.Invoke();
+			canvasGroup.alpha = FadeOutCurve.Evaluate(1f);
+			OnFadeOutComplete.Invoke();
+			return null;
 		}
 
 		/// <summary>
