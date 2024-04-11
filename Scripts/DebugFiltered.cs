@@ -11,7 +11,7 @@ namespace AeLa.Utilities
 	{
 		public static void Log(LogType logType, LogLevel filterLevel, object message, Object context = null)
 		{
-			if (LogTypeToLevel(logType) != filterLevel) return;
+			if (LogTypeToLevel(logType) > filterLevel) return;
 			Debug.unityLogger.Log(logType, message, context);
 		}
 
