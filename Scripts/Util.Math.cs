@@ -75,12 +75,26 @@ namespace AeLa.Utilities
 			}
 
 			/// <summary>
-			/// Returns the provided value wrapped to the range [<paramref name="min">, <paramref name="max">]
+			/// Returns the provided value wrapped to the range [min, max]
 			/// </summary>
 			public static float Wrap(float value, float min, float max)
 			{
 				return value < min ? max - (min - value) % (max - min) : min + (value - min) % (max - min);
 			}
+
+			/// <inheritdoc cref="Wrap(float,float,float)"/>
+			public static int Wrap(int value, int min, int max)
+			{
+				return value < min ? max - (min - value) % (max - min) : min + (value - min) % (max - min);
+			}
+
+			/// <summary>
+			/// Returns the provided value wrapped to the range [0, max]
+			/// </summary>
+			public static float Wrap(float value, float max) => Wrap(value, 0, max);
+
+			/// <inheritdoc cref="Wrap(float,float)"/>
+			public static int Wrap(int value, int max) => Wrap(value, 0, max);
 
 			/// <summary>
 			/// Returns the provided value wrapped to the range [-360, 360]
