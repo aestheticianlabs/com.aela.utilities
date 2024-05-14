@@ -27,16 +27,14 @@ namespace AeLa.Utilities
 		// makes it work with the existing Unity methods (LoadLevel/LoadScene)
 		public static implicit operator string(SceneField sceneField)
 		{
-			return sceneField.ScenePath;
+			return sceneField?.ScenePath;
 		}
 
 		[Conditional("UNITY_EDITOR")]
-		public void RefreshSceneName()
+		public void RefreshScenePath()
 		{
 #if UNITY_EDITOR
-			scenePath = Path.GetFileNameWithoutExtension(
-				path: AssetDatabase.GetAssetPath(sceneAsset)
-			);
+			scenePath = AssetDatabase.GetAssetPath(sceneAsset);
 #endif
 		}
 	}
