@@ -16,6 +16,11 @@ namespace AeLa.Utilities
 			public float Weight = 1;
 		}
 
+		public WeightedRandomList(WeightedRandomList<T> source)
+		{
+			items = new(source);
+		}
+
 		public T GetRandomItem()
 		{
 			if (items == null || items.Count == 0) return default;
