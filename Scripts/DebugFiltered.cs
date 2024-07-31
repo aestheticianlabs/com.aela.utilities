@@ -31,8 +31,8 @@ namespace AeLa.Utilities
         [HideInCallstack]
 		public static void LogException(LogLevel filterLevel, Exception exception, Object context = null)
 		{
-			if (filterLevel != LogLevel.Exception) return;
-			Debug.LogException(exception, context);
+			if (LogTypeToLevel(LogType.Exception) > filterLevel) return;
+			Debug.unityLogger.LogException(exception, context);
 		}
 
 		private static LogLevel LogTypeToLevel(LogType logType)
