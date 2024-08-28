@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace AeLa.Utilities
 {
 	[System.Serializable]
 	public class WeightedRandomList<T> : IList<WeightedRandomList<T>.WeightedRandomItem>
 	{
-		[SerializeField] private List<WeightedRandomItem> items;
+		[FormerlySerializedAs("items")] public List<WeightedRandomItem> Items;
 
 		[System.Serializable]
 		public class WeightedRandomItem
@@ -18,24 +19,24 @@ namespace AeLa.Utilities
 
 		public WeightedRandomList(WeightedRandomList<T> source)
 		{
-			items = new(source);
+			Items = new(source);
 		}
 
 		public T GetRandomItem()
 		{
-			if (items == null || items.Count == 0) return default;
+			if (Items == null || Items.Count == 0) return default;
 			return GetRandomItemInternal(Random.Range(0, GetTotalWeight()));
 		}
 
 		public T GetRandomItem(System.Random random)
 		{
-			if (items == null || items.Count == 0) return default;
+			if (Items == null || Items.Count == 0) return default;
 			return GetRandomItemInternal((float)random.NextDouble() * GetTotalWeight());
 		}
 
 		private T GetRandomItemInternal(float fromWeight)
 		{
-			foreach (var item in items)
+			foreach (var item in Items)
 			{
 				if (item == null) continue;
 				fromWeight -= item.Weight;
@@ -45,16 +46,16 @@ namespace AeLa.Utilities
 				}
 			}
 			
-			return items[0].Item;
+			return Items[0].Item;
 		}
 
 		private float GetTotalWeight()
 		{
 			float totalWeight = 0;
-			for (int i = 0; i < items.Count; i++)
+			for (int i = 0; i < Items.Count; i++)
 			{
-				if (items[i] == null) continue;
-				totalWeight += items[i].Weight;
+				if (Items[i] == null) continue;
+				totalWeight += Items[i].Weight;
 			}
 
 			return totalWeight;
@@ -62,33 +63,33 @@ namespace AeLa.Utilities
 
 		#region IList
 
-		public IEnumerator<WeightedRandomItem> GetEnumerator() => items.GetEnumerator();
+		public IEnumerator<WeightedRandomItem> GetEnumerator() => Items.GetEnumerator();
 
-		IEnumerator IEnumerable.GetEnumerator() => items.GetEnumerator();
+		IEnumerator IEnumerable.GetEnumerator() => Items.GetEnumerator();
 
-		public void Add(WeightedRandomItem weightedRandomItem) => items.Add(weightedRandomItem);
+		public void Add(WeightedRandomItem weightedRandomItem) => Items.Add(weightedRandomItem);
 
-		public void Clear() => items.Clear();
+		public void Clear() => Items.Clear();
 
-		public bool Contains(WeightedRandomItem weightedRandomItem) => items.Contains(weightedRandomItem);
+		public bool Contains(WeightedRandomItem weightedRandomItem) => Items.Contains(weightedRandomItem);
 
-		public void CopyTo(WeightedRandomItem[] array, int arrayIndex) => items.CopyTo(array, arrayIndex);
+		public void CopyTo(WeightedRandomItem[] array, int arrayIndex) => Items.CopyTo(array, arrayIndex);
 
-		public bool Remove(WeightedRandomItem weightedRandomItem) => items.Remove(weightedRandomItem);
+		public bool Remove(WeightedRandomItem weightedRandomItem) => Items.Remove(weightedRandomItem);
 
-		public int Count => items.Count;
+		public int Count => Items.Count;
 		public bool IsReadOnly => false;
 
-		public int IndexOf(WeightedRandomItem weightedRandomItem) => items.IndexOf(weightedRandomItem);
+		public int IndexOf(WeightedRandomItem weightedRandomItem) => Items.IndexOf(weightedRandomItem);
 
-		public void Insert(int index, WeightedRandomItem weightedRandomItem) => items.Insert(index, weightedRandomItem);
+		public void Insert(int index, WeightedRandomItem weightedRandomItem) => Items.Insert(index, weightedRandomItem);
 
-		public void RemoveAt(int index) => items.RemoveAt(index);
+		public void RemoveAt(int index) => Items.RemoveAt(index);
 
 		WeightedRandomItem IList<WeightedRandomItem>.this[int index]
 		{
-			get => items[index];
-			set => items[index] = value;
+			get => Items[index];
+			set => Items[index] = value;
 		}
 
 		#endregion
