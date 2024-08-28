@@ -17,6 +17,16 @@ namespace AeLa.Utilities
 			public float Weight = 1;
 		}
 
+		public WeightedRandomList()
+		{
+			Items = new();
+		}
+
+		public WeightedRandomList(List<WeightedRandomItem> items)
+		{
+			Items = items;
+		}
+
 		public WeightedRandomList(WeightedRandomList<T> source)
 		{
 			Items = new(source);

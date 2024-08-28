@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.6.2] - 2024-08-28
 
+### Added
+
+- `WeightedRandomList` default constructor
+- `WeightedRandomList` `List<WeightedRandomItem>` constructor
+
 ### Changed
 
 - Make `WeightedRandomList.Items` list public so weighted random lists can be edited from code
