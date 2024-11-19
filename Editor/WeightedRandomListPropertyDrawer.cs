@@ -25,6 +25,8 @@ namespace AeLa.Utilities.Editor
 		private const string ItemProp = nameof(WeightedRandomList<object>.WeightedRandomItem.Item);
 		private const string WeightProp = nameof(WeightedRandomList<object>.WeightedRandomItem.Weight);
 
-		public WeightedRandomListElementPropertyDrawer() : base(ItemProp, WeightProp) { }
+		public WeightedRandomListElementPropertyDrawer() : base(ItemProp, WeightProp)
+		{
+		}
 	}
 }

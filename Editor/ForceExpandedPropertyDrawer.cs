@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,7 +9,7 @@ namespace AeLa.Utilities.Editor
 	public abstract class ForceExpandedPropertyDrawer : PropertyDrawer
 	{
 		private string[] props;
-		protected virtual bool showLabel => false;
+		protected virtual bool ShowLabel => false;
 
 		private static readonly float fullLineHeight =
 			EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
@@ -26,18 +29,17 @@ namespace AeLa.Utilities.Editor
 		{
 			EditorGUI.BeginProperty(position, label, property);
 
-			if (showLabel)
+			if (ShowLabel)
 			{
 				position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
 			}
 
 			// Calculate rects
 			var rect = new Rect(position.x, position.y, position.width, fullLineHeight);
-			foreach (var prop in props)
+			foreach (var prop in Enumerate(property))
 			{
-				var p = property.FindPropertyRelative(prop);
-				rect.height = EditorGUI.GetPropertyHeight(p, true);
-				EditorGUI.PropertyField(rect, p, true);
+				rect.height = EditorGUI.GetPropertyHeight(prop, true);
+				EditorGUI.PropertyField(rect, prop, true);
 				rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
 			}
 
@@ -46,15 +48,34 @@ namespace AeLa.Utilities.Editor
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
-			var height = padding;
+			return padding + Enumerate(property).Sum(
+				prop => EditorGUI.GetPropertyHeight(prop, true) + EditorGUIUtility.standardVerticalSpacing
+			);
+		}
 
-			foreach (var prop in props)
+		protected IEnumerable<SerializedProperty> Enumerate(SerializedProperty property)
+		{
+			if (props?.Length > 0)
 			{
-				height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative(prop), true) +
-				          EditorGUIUtility.standardVerticalSpacing;
+				return props.Select(property.FindPropertyRelative);
 			}
 
-			return height;
+			return EnumerateProps(property);
+		}
+
+		protected IEnumerable<SerializedProperty> EnumerateProps(SerializedProperty property)
+		{
+			var e = property.GetEnumerator();
+			var rootDepth = property.depth;
+			using (e as IDisposable)
+			{
+				while (e.MoveNext())
+				{
+					var prop = (SerializedProperty)e.Current;
+					if (prop?.depth > rootDepth + 1) continue;
+					yield return prop;
+				}
+			}
 		}
 	}
 }

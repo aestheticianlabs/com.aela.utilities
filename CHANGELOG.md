@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GetComponentCached` and `TryGetComponentCached` now also extend `Component` instead of just `GameObject`
 - `ScriptableList<TItem>`: A quick way to define a `ScriptableObject` that holds a list of items and implements `IList`
 
+### Changed
+
+- Improved `ForceExpandedPropertyDrawer`
+
 ### Fixed
 
 - `RandomElemennt` returns null instead of throwing `IndexOutOfRangeException`
