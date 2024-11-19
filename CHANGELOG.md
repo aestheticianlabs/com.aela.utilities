@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Extension methods
 	- `GetUniqueRandom`
   - Stack/queue API for `IList<T>`: `Peek`, `Push`, `Pop`, `Enqueue`, `Dequeue`
+  - `Shuffle(IList<T>)` to shuffle a list in place
   - `Vector3 SwizzleXYZ_XZY(Vector3)` 
 - `GetComponentCached` and `TryGetComponentCached` now also extend `Component` instead of just `GameObject`
 

@@ -316,6 +316,20 @@ namespace AeLa.Utilities
 		}
 
 		/// <summary>
+		/// Shuffles a list in place
+		/// </summary>
+		/// <param name="list"></param>
+		/// <typeparam name="T"></typeparam>
+		public static void Shuffle<T>(this IList<T> list)
+		{
+			for (int i = list.Count - 1; i >= 0; i--)
+			{
+				var swap = Random.Range(0, i + 1);
+				(list[swap], list[i]) = (list[i], list[swap]);
+			}
+		}
+
+		/// <summary>
 		/// Gets the connected anchor for this joint in world space, whether or not there is a connected body.
 		/// </summary>
 		public static Vector3 GetWorldAnchor(this Joint joint) =>
