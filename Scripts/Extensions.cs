@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 using UnityEngine;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace AeLa.Utilities
@@ -87,6 +86,21 @@ namespace AeLa.Utilities
 			if (collection.Count == 0) return default;
 			var i = Random.Range(0, collection.Count);
 			return collection.ElementAt(i);
+		}
+
+		public static T GetUniqueRandom<T>(this ICollection<T> collection, ISet<T> used, int loopMax = 100)
+		{
+			if (collection.Count == 0) return default;
+
+			T ret = default;
+
+			for (var i = 0; i < loopMax; i++)
+			{
+				ret = collection.RandomElement();
+				if (used.Add(ret)) return ret;
+			}
+
+			return ret;
 		}
 
 		public static bool TryFind<T>(this IEnumerable<T> collection, Predicate<T> predicate, out T match)
@@ -183,7 +197,7 @@ namespace AeLa.Utilities
 			{
 				var message = $"{gameObject} is missing required component {typeof(T)}";
 				if (context) message += $" ({context})";
-				Debug.LogError(message, context ? (Object)context : gameObject);
+				Debug.LogError(message, context ? context : gameObject);
 			}
 
 			return ret;
@@ -277,7 +291,7 @@ namespace AeLa.Utilities
 
 			return nearest;
 		}
-		
+
 		/// <summary>
 		/// Gets the connected anchor for this joint in world space, whether or not there is a connected body.
 		/// </summary>

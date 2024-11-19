@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- Extension methods
+	- `GetUniqueRandom`
+
 ### Fixed
 
 - `RandomElemennt` returns null instead of throwing `IndexOutOfRangeException`
@@ -31,7 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Development
 
 - Added `DebugFiltered.LogException` tests
-
 
 ## [1.6.0] - 2024-06-06
 
