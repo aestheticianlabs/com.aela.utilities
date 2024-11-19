@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `EventSystemCallbackExtensions` which make it easier to get various `EventSystem` callbacks like `IPointerEnterHandler`
+- `TargetGraphicsGroup` and `MultiTargetButton`
+	- See https://discussions.unity.com/t/tint-multiple-targets-with-single-button/556754/11
+- `ScriptableList<TItem>`: A quick way to define a `ScriptableObject` that holds a list of items and implements `IList`
+- `Compare` `Min` and `Max`
+- `EventValue<T>`: Holds a value and sends an events on value change
 - Extension methods
 	- `GetUniqueRandom`
 	- Stack/queue API for `IList<T>`: `Peek`, `Push`, `Pop`, `Enqueue`, `Dequeue`
@@ -23,16 +28,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 		- `GetRandomValue` for `Vector2` and `Vector2Int` ranges
 		- `CancelAndDispose(CancellationTokenSource)`
 		- `FindInAllChildren(Transform)`
-- `GetComponentCached` and `TryGetComponentCached` now also extend `Component` instead of just `GameObject`
-- `ScriptableList<TItem>`: A quick way to define a `ScriptableObject` that holds a list of items and implements `IList`
-- `TargetGraphicsGroup` and `MultiTargetButton`
-	- See https://discussions.unity.com/t/tint-multiple-targets-with-single-button/556754/11
-- `Compare` `Min` and `Max`
 
 ### Changed
 
 - BREAKING: Rename `Comparers` to `Compare`
 - Improved `ForceExpandedPropertyDrawer`
+- `GetComponentCached` and `TryGetComponentCached` now also extend `Component` instead of just `GameObject`
 
 ### Fixed
 
