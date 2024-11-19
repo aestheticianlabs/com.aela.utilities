@@ -337,5 +337,7 @@ namespace AeLa.Utilities
 
 			joint.connectedAnchor = worldAnchor;
 		}
+
+		public static Vector3 SwizzleXYZ_XZY(this Vector3 v) => new(v.x, v.z, v.y);
 	}
 }
