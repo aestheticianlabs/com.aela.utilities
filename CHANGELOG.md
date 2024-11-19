@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Extension methods
 	- `GetUniqueRandom`
   - Stack/queue API for `IList<T>`: `Peek`, `Push`, `Pop`, `Enqueue`, `Dequeue`
+- `GetComponentCached` and `TryGetComponentCached` now also extend `Component` instead of just `GameObject`
 
 ### Fixed
 

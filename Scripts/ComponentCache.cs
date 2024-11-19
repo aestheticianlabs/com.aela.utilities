@@ -40,10 +40,16 @@ namespace AeLa.Utilities
 			return component;
 		}
 
+		public static T GetComponentCached<T>(this Component obj) where T : Component
+			=> obj.gameObject.GetComponentCached<T>();
+
 		public static bool TryGetComponentCached<T>(this GameObject go, out T component) where T : Component
 		{
 			return component = go.GetComponentCached<T>();
 		}
+
+		public static bool TryGetComponentCached<T>(this Component obj, out T component) where T : Component
+			=> obj.gameObject.TryGetComponentCached(out component);
 
 		public static T GetOrAddComponentCached<T>(this GameObject go)  where T : Component
 		{
