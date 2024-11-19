@@ -24,9 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 		- `FindInAllChildren(Transform)`
 - `GetComponentCached` and `TryGetComponentCached` now also extend `Component` instead of just `GameObject`
 - `ScriptableList<TItem>`: A quick way to define a `ScriptableObject` that holds a list of items and implements `IList`
+- `TargetGraphicsGroup` and `MultiTargetButton`
+	- See https://discussions.unity.com/t/tint-multiple-targets-with-single-button/556754/11
+- `Compare` `Min` and `Max`
 
 ### Changed
 
+- BREAKING: Rename `Comparers` to `Compare`
 - Improved `ForceExpandedPropertyDrawer`
 
 ### Fixed
