@@ -385,6 +385,12 @@ namespace AeLa.Utilities
 				? joint.connectedAnchor + joint.connectedBody.transform.position
 				: joint.connectedAnchor;
 
+		public static int GetRandomValue(this Vector2Int range) => Random.Range(range[0], range[1]);
+
+		public static int GetRandomValueInclusive(this Vector2Int range) => Random.Range(range[0], range[1] + 1);
+
+		public static float GetRandomValue(this Vector2 range) => Random.Range(range[0], range[1]);
+
 		/// <summary>
 		/// Sets the connected anchor for this joint in world space.
 		/// </summary>
