@@ -367,6 +367,16 @@ namespace AeLa.Utilities
 			return hashSet.Count == 1 && hashSet.Contains(item);
 		}
 
+		public static RectTransform GetRectTransform(this Component c)
+		{
+			return c.transform.AsRectTransform();
+		}
+
+		public static RectTransform AsRectTransform(this Transform t)
+		{
+			return (RectTransform)t;
+		}
+
 		/// <summary>
 		/// Gets the connected anchor for this joint in world space, whether or not there is a connected body.
 		/// </summary>
