@@ -414,5 +414,25 @@ namespace AeLa.Utilities
 			cts.Cancel();
 			cts.Dispose();
 		}
+
+		/// <summary>
+		/// Returns the child transform with the provided name
+		/// nearest to this transform in the hierarchy or null if none found.
+		/// </summary>
+		public static Transform FindInAllChildren(this Transform transform, string name)
+		{
+			foreach (Transform child in transform)
+			{
+				if (child.name == name) return child;
+			}
+
+			foreach (Transform child in transform)
+			{
+				var result = child.FindInAllChildren(name);
+				if (result) return result;
+			}
+
+			return null;
+		}
 	}
 }

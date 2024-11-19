@@ -15,11 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 	- `Shuffle(IList<T>)` to shuffle a list in place
 	- `Any(ICollection<T>)` substitution that's more efficient than LINQ
 	- `Only(HashSet<T>)`
-  - `Slice(IReadOnlyList<T>)`
-  - `Vector3 SwizzleXYZ_XZY(Vector3)`
-  - `AsRectTransform(Transform)` and `GetRectTransform(Component)`
-  - `GetRandomValue` for `Vector2` and `Vector2Int` ranges
-  - `CancelAndDispose(CancellationTokenSource)`
+	- `Slice(IReadOnlyList<T>)`
+	- `Vector3 SwizzleXYZ_XZY(Vector3)`
+	- `AsRectTransform(Transform)` and `GetRectTransform(Component)`
+	- `GetRandomValue` for `Vector2` and `Vector2Int` ranges
+	- `CancelAndDispose(CancellationTokenSource)`
+	- `FindInAllChildren(Transform)`
 - `GetComponentCached` and `TryGetComponentCached` now also extend `Component` instead of just `GameObject`
 
 ### Fixed
@@ -49,7 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.6.0] - 2024-06-06
 
-### Addded
+### Added
 
 - Add copy constructor to `WeightedRandomList`
 
