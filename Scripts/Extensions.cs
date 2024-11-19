@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -407,5 +408,11 @@ namespace AeLa.Utilities
 		}
 
 		public static Vector3 SwizzleXYZ_XZY(this Vector3 v) => new(v.x, v.z, v.y);
+
+		public static void CancelAndDispose([NotNull] this CancellationTokenSource cts)
+		{
+			cts.Cancel();
+			cts.Dispose();
+		}
 	}
 }
