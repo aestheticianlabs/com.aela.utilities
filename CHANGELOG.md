@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `EventSystemCallbackExtensions` which make it easier to get various `EventSystem` callbacks like `IPointerEnterHandler`
 - Extension methods
 	- `GetUniqueRandom`
 	- Stack/queue API for `IList<T>`: `Peek`, `Push`, `Pop`, `Enqueue`, `Dequeue`
