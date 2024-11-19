@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using JetBrains.Annotations;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace AeLa.Utilities
 {
+	[PublicAPI]
 	public static class Extensions
 	{
 		/// <summary>
@@ -79,10 +82,11 @@ namespace AeLa.Utilities
 			return sb.ToString();
 		}
 
-		public static T RandomElement<T>(this IList<T> list)
+		public static T RandomElement<T>(this ICollection<T> collection)
 		{
-			var i = Random.Range(0, list.Count);
-			return list[i];
+			if (collection.Count == 0) return default;
+			var i = Random.Range(0, collection.Count);
+			return collection.ElementAt(i);
 		}
 
 		public static bool TryFind<T>(this IEnumerable<T> collection, Predicate<T> predicate, out T match)
