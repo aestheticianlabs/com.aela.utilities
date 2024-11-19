@@ -17,10 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 	- `Only(HashSet<T>)`
 	- `Slice(IReadOnlyList<T>)`
 	- `Vector3 SwizzleXYZ_XZY(Vector3)`
-	- `AsRectTransform(Transform)` and `GetRectTransform(Component)`
-	- `GetRandomValue` for `Vector2` and `Vector2Int` ranges
-	- `CancelAndDispose(CancellationTokenSource)`
-	- `FindInAllChildren(Transform)`
+	- `RotateBy(Vector2)`
+		- `AsRectTransform(Transform)` and `GetRectTransform(Component)`
+		- `GetRandomValue` for `Vector2` and `Vector2Int` ranges
+		- `CancelAndDispose(CancellationTokenSource)`
+		- `FindInAllChildren(Transform)`
 - `GetComponentCached` and `TryGetComponentCached` now also extend `Component` instead of just `GameObject`
 
 ### Fixed

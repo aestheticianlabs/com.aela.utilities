@@ -47,6 +47,16 @@ namespace AeLa.Utilities
 			};
 		}
 
+		/// <summary>
+		/// Returns a vector rotated by <paramref name="radians"/>
+		/// </summary>
+		public static Vector2 RotateBy(this Vector2 v, float radians)
+		{
+			var cos = Mathf.Cos(radians);
+			var sin = Mathf.Sin(radians);
+			return new(v.x * cos - v.y * sin, v.x * sin + v.y * cos);
+		}
+
 		public static Color WithAlpha(this Color color, float a)
 		{
 			var c = color;
