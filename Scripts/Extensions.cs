@@ -315,6 +315,28 @@ namespace AeLa.Utilities
 			list.Add(item);
 		}
 
+		public static IList<T> Slice<T>(this IReadOnlyList<T> list, int startIndex, int length)
+		{
+			var result = new List<T>();
+			list.Slice(startIndex, length, result);
+			return result;
+		}
+
+		public static void Slice<T>(this IReadOnlyList<T> list, int startIndex, int length, IList<T> resultList)
+		{
+			if (startIndex < 0)
+				throw new ArgumentOutOfRangeException(nameof(startIndex), $"{nameof(startIndex)} must be > 0");
+
+			if (length < 0)
+				throw new ArgumentOutOfRangeException(nameof(length), $"{nameof(length)} must be > 0");
+
+			resultList.Clear();
+			for (var i = 0; i < length; i++)
+			{
+				resultList.Add(list[startIndex + i]);
+			}
+		}
+
 		/// <summary>
 		/// Shuffles a list in place
 		/// </summary>
@@ -327,6 +349,22 @@ namespace AeLa.Utilities
 				var swap = Random.Range(0, i + 1);
 				(list[swap], list[i]) = (list[i], list[swap]);
 			}
+		}
+
+		/// <summary>
+		/// More efficient version of LINQ Any() for ICollections
+		/// </summary>
+		public static bool Any<T>(this ICollection<T> collection)
+		{
+			return collection.Count > 0;
+		}
+
+		/// <summary>
+		/// Returns whether the <see cref="HashSet{T}"/> contains only the provided item.
+		/// </summary>
+		public static bool Only<T>(this HashSet<T> hashSet, T item)
+		{
+			return hashSet.Count == 1 && hashSet.Contains(item);
 		}
 
 		/// <summary>
