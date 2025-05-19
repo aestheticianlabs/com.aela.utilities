@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AeLa.Utilities.Editor
 {
-	[CustomPropertyDrawer(typeof(WeightedRandomList<>))]
+	[CustomPropertyDrawer(typeof(WeightedRandomList<>), true)]
 	public class WeightedRandomListPropertyDrawer : PropertyDrawer
 	{
 		private const string ItemsProp = nameof(WeightedRandomList<object>.Items);
