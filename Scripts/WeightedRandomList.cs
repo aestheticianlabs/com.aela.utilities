@@ -32,19 +32,19 @@ namespace AeLa.Utilities
 			Items = new(source);
 		}
 
-		public T GetRandomItem()
+		public virtual T GetRandomItem()
 		{
 			if (Items == null || Items.Count == 0) return default;
 			return GetRandomItemInternal(Random.Range(0, GetTotalWeight()));
 		}
 
-		public T GetRandomItem(System.Random random)
+		public virtual T GetRandomItem(System.Random random)
 		{
 			if (Items == null || Items.Count == 0) return default;
 			return GetRandomItemInternal((float)random.NextDouble() * GetTotalWeight());
 		}
 
-		private T GetRandomItemInternal(float fromWeight)
+		protected virtual T GetRandomItemInternal(float fromWeight)
 		{
 			foreach (var item in Items)
 			{
@@ -59,7 +59,7 @@ namespace AeLa.Utilities
 			return Items[0].Item;
 		}
 
-		private float GetTotalWeight()
+		protected virtual float GetTotalWeight()
 		{
 			float totalWeight = 0;
 			for (int i = 0; i < Items.Count; i++)
@@ -73,7 +73,7 @@ namespace AeLa.Utilities
 
 		#region IList
 
-		public IEnumerator<WeightedRandomItem> GetEnumerator() => Items.GetEnumerator();
+		public virtual IEnumerator<WeightedRandomItem> GetEnumerator() => Items.GetEnumerator();
 
 		IEnumerator IEnumerable.GetEnumerator() => Items.GetEnumerator();
 
