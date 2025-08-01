@@ -214,6 +214,21 @@ namespace AeLa.Utilities
 			return ret;
 		}
 
+		public static void PushRange<T>(this Stack<T> stack, IEnumerable<T> range)
+		{
+			foreach (var item in range)
+			{
+				stack.Push(item);
+			}
+		}
+
+		public static Stack<T> AsStack<T>(this IEnumerable<T> range)
+		{
+			var stack = new Stack<T>();
+			stack.PushRange(range);
+			return stack;
+		}
+
 		public static bool TryGetValue<TKey, TDict, T>(this TDict dict, TKey key, out T val)
 			where TDict : IDictionary<TKey, object>
 		{
