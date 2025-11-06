@@ -32,7 +32,7 @@ namespace AeLa.Utilities.Physics
 
 		private void OnEnable()
 		{
-			lastRBVelo = body.velocity;
+			lastRBVelo = body.linearVelocity;
 		}
 
 		private void OnDisable()
@@ -44,7 +44,7 @@ namespace AeLa.Utilities.Physics
 		{
 			var dt = Time.fixedDeltaTime;
 
-			var deltaVelo = body.velocity - lastRBVelo;
+			var deltaVelo = body.linearVelocity - lastRBVelo;
 			var impact = deltaVelo * -impactStrengthGlobal;
 			impact.Scale(impactStrength);
 			velocity += impact;
@@ -62,7 +62,7 @@ namespace AeLa.Utilities.Physics
 
 			currentDamp = damp;
 
-			lastRBVelo = body.velocity;
+			lastRBVelo = body.linearVelocity;
 		}
 
 		public void OverrideDamp(float damp)

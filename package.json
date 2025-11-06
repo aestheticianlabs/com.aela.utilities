@@ -1,13 +1,13 @@
 {
-	"name": "com.aela.utilities",
-	"version": "1.7.1",
-	"displayName": "AeLa Utilities",
-	"description": "Helpful Unity Utilities",
-	"unity": "2021.3",
-	"documentationUrl": "https://github.com/aestheticianlabs/com.aela.utilities/",
-	"dependencies": {},
-	"author": {
-		"name": "Aesthetician Labs",
-		"url": "https://aesthetic.games/"
-	}
+  "name": "com.aela.utilities",
+  "version": "1.8.0",
+  "displayName": "AeLa Utilities",
+  "description": "Helpful Unity Utilities",
+  "unity": "6000.0",
+  "documentationUrl": "https://github.com/aestheticianlabs/com.aela.utilities/",
+  "dependencies": {},
+  "author": {
+	"name": "Aesthetician Labs",
+	"url": "https://aesthetic.games/"
+  }
 }
