@@ -133,6 +133,11 @@ namespace AeLa.Utilities
 				var factor = Mathf.Pow(10, precision);
 				return Mathf.Round(value * factor) / factor;
 			}
+
+			public static bool Approximately(float value, float target, float epsilon)
+			{
+				return Mathf.Abs(value - target) <= epsilon;
+			}
 		}
 	}
 }
