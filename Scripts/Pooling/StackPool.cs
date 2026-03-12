@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.Pool;
 
-namespace AeLa.Utilities.Pool
+namespace AeLa.Utilities.Pooling
 {
 	public static class StackPool<T>
 	{
