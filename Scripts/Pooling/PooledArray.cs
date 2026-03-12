@@ -20,6 +20,7 @@ namespace AeLa.Utilities.Pooling
 
 		public void Dispose()
 		{
+			if (array == null) return;
 			ArrayPool<T>.Shared.Return(array);
 			array = null;
 		}
