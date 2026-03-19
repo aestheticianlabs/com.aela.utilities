@@ -138,6 +138,24 @@ namespace AeLa.Utilities
 			{
 				return Mathf.Abs(value - target) <= epsilon;
 			}
+
+			/// <summary>
+			/// Returns the Greatest Common Divisor between two integers
+			/// </summary>
+			public static int GCD(int a, int b)
+			{
+				var qn = System.Math.Abs(a);
+				var rn = System.Math.Abs(b);
+
+				while (rn != 0)
+				{
+					var r = qn % rn;
+					qn = rn;
+					rn = r;
+				}
+
+				return qn;
+			}
 		}
 	}
 }
